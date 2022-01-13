@@ -18,8 +18,10 @@ React를 사용하여 클론코딩하면서 마스터
 - [x] Coin Data
 - [x] Chart
 - [ ] Invert to [Candlestick Charts](https://apexcharts.com/react-chart-demos/candlestick-charts/category-x-axis/)
-- [ ] Price(Detail of coin)
+  - Chart -> IHistorical -> open/ high / low / close
+- [ ] Price(Detail and Style of coin)
 - [ ] Back Button
+- [ ] Light / Dark mode
 
 ### [Link](#)
 
