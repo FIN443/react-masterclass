@@ -10,11 +10,16 @@ React를 사용하여 클론코딩하면서 마스터
   - [x] react
   - [x] typescript
   - [x] styled-components
+  - [x] react-query
+  - [x] react-helmet
+  - [x] apexcharts
 - [x] Styles
 - [x] Route
 - [x] Coin Data
-- [ ] Chart
-- [ ] Price
+- [x] Chart
+- [ ] Invert to [Candlestick Charts](https://apexcharts.com/react-chart-demos/candlestick-charts/category-x-axis/)
+- [ ] Price(Detail of coin)
+- [ ] Back Button
 
 ### [Link](#)
 
