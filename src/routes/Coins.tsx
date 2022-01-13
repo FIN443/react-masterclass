@@ -4,10 +4,12 @@ import styled from "styled-components";
 
 const Container = styled.div`
   padding: 0px 20px;
+  max-width: 480px;
+  margin: 0 auto;
 `;
 
 const Header = styled.header`
-  height: 10vh;
+  height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +26,7 @@ const Coin = styled.li`
     display: flex;
     align-items: center;
     padding: 20px;
-    transition: color 0.1s ease-in-out;
+    transition: color 0.2s ease-in-out;
     &:hover {
       color: ${(props) => props.theme.accentColor};
     }
