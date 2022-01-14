@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
@@ -21,10 +20,11 @@ const Header = styled.header`
 const CoinsList = styled.ul``;
 
 const Coin = styled.li`
-  background-color: white;
-  color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.cardTextColor};
   margin-bottom: 10px;
   border-radius: 15px;
+  transition: background-color 0.2s ease-in-out;
   a {
     display: flex;
     align-items: center;
@@ -62,7 +62,9 @@ interface ICoin {
   type: string;
 }
 
-function Coins() {
+interface ICoinsProps {}
+
+function Coins({}: ICoinsProps) {
   const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins);
   /* const [coins, setCoins] = useState<CoinInterface[]>([]);
   const [loading, setLoading] = useState(true);

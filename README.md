@@ -10,9 +10,10 @@ React를 사용하여 클론코딩하면서 마스터
   - [x] react
   - [x] typescript
   - [x] styled-components
-  - [x] react-query
+  - [x] react-query(api)
   - [x] react-helmet
   - [x] apexcharts
+  - [x] recoil(state managements)
 - [x] Styles
 - [x] Route
 - [x] Coin Data
