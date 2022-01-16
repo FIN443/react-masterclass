@@ -6,10 +6,10 @@ React를 사용하여 클론코딩하면서 마스터
 
 ## Crypto Tracker
 
-- [x] Setup
-  - [x] react
-  - [x] typescript
+- Setup
+  - [x] react(typescript)
   - [x] styled-components
+  - [x] react-router-dom
   - [x] react-query(api)
   - [x] react-helmet
   - [x] apexcharts
@@ -28,12 +28,25 @@ React를 사용하여 클론코딩하면서 마스터
 
 ---
 
+## ToDoList
+
+- Setup
+  - [x] react(typescript)
+  - [x] styled-components
+  - [x] recoil
+  - [x] react-hook-form
+- [ ] Styles
+- [ ] Route
+
+---
+
 ## Trello Clone
 
-- [ ] Setup
-  - [ ] react
-  - [ ] typescript
+- Setup
+  - [ ] react(typescript)
   - [ ] styled-components
+  - [ ] react-router-dom
+  - [ ] recoil
 - [ ] Styles
 - [ ] Route
 
@@ -43,10 +56,11 @@ React를 사용하여 클론코딩하면서 마스터
 
 ## Neflix Clone
 
-- [ ] Setup
-  - [ ] react
-  - [ ] typescript
+- Setup
+  - [ ] react(typescript)
   - [ ] styled-components
+  - [ ] react-router-dom
+  - [ ] recoil
 - [ ] Styles
 - [ ] Route
 
