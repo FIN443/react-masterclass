@@ -22,9 +22,9 @@ React를 사용하여 클론코딩하면서 마스터
   - Chart -> IHistorical -> open/ high / low / close
 - [ ] Price(Detail and Style of coin)
 - [ ] Back Button
-- [ ] Light / Dark mode
+- [x] Light / Dark mode
 
-### [Link](#)
+### [Link](https://codesandbox.io/s/crypto-tracker-muol7)
 
 ---
 
