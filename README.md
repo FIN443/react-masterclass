@@ -35,7 +35,10 @@ React를 사용하여 클론코딩하면서 마스터
   - [x] styled-components
   - [x] recoil
   - [x] react-hook-form
-- [ ] Form(Validation, Error)
+- Form
+  - [x] Validation
+  - [x] Error
+  - [x] Custom Validation
 - [ ] Styles
 
 ### [Link](#)
