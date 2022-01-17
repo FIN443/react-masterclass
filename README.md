@@ -14,7 +14,6 @@ React를 사용하여 클론코딩하면서 마스터
   - [x] react-helmet
   - [x] apexcharts
   - [x] recoil(state managements)
-- [x] Styles
 - [x] Route
 - [x] Coin Data
 - [x] Chart
@@ -23,6 +22,7 @@ React를 사용하여 클론코딩하면서 마스터
 - [ ] Price(Detail and Style of coin)
 - [ ] Back Button
 - [x] Light / Dark mode
+- [ ] Styles
 
 ### [Link](https://codesandbox.io/s/crypto-tracker-muol7)
 
@@ -35,8 +35,10 @@ React를 사용하여 클론코딩하면서 마스터
   - [x] styled-components
   - [x] recoil
   - [x] react-hook-form
+- [ ] Form(Validation, Error)
 - [ ] Styles
-- [ ] Route
+
+### [Link](#)
 
 ---
 
