@@ -11,11 +11,23 @@ function ToDo({ text, category, id }: IToDo) {
     setToDos((oldToDos) => {
       const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
       const newToDo = { text, id, category: name as any };
-      return [
+      if (name === Categories.DELETE) {
+        const newToDos = [
+          ...oldToDos.slice(0, targetIndex),
+          ...oldToDos.slice(targetIndex + 1),
+        ];
+        // localStorage save
+        localStorage.setItem("toDos", JSON.stringify(newToDos));
+        return newToDos;
+      }
+      const newToDos = [
         ...oldToDos.slice(0, targetIndex),
         newToDo,
         ...oldToDos.slice(targetIndex + 1),
       ];
+      // localStorage save
+      localStorage.setItem("toDos", JSON.stringify(newToDos));
+      return newToDos;
     });
   };
   return (
@@ -34,6 +46,11 @@ function ToDo({ text, category, id }: IToDo) {
       {category !== Categories.DONE && (
         <button name={Categories.DONE} onClick={onClick}>
           Done
+        </button>
+      )}
+      {category !== Categories.DELETE && (
+        <button name={Categories.DELETE} onClick={onClick}>
+          Delete
         </button>
       )}
     </li>

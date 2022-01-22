@@ -39,6 +39,10 @@ React를 사용하여 클론코딩하면서 마스터
   - [x] Validation
   - [x] Error
   - [x] Custom Validation
+- [x] Add
+- [x] To Do / Doing / Done
+- [x] Delete
+- [x] LocalStorage
 - [ ] Styles
 
 ### [Link](#)
