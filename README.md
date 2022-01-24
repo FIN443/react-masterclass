@@ -18,10 +18,10 @@ React를 사용하여 클론코딩하면서 마스터
 - [x] Route
 - [x] Coin Data
 - [x] Chart
-- [ ] Invert to [Candlestick Charts](https://apexcharts.com/react-chart-demos/candlestick-charts/category-x-axis/)
+- [x] Invert to [Candlestick Charts](https://apexcharts.com/react-chart-demos/candlestick-charts/category-x-axis/)
   - Chart -> IHistorical -> open/ high / low / close
 - [ ] Price(Detail and Style of coin)
-- [ ] Back Button
+- [x] Back Button
 - [x] Light / Dark mode
 
 ### [Link](https://codesandbox.io/s/crypto-tracker-muol7)

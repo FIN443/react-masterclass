@@ -28,18 +28,23 @@ function Chart({ coinId }: ChartProps) {
     }
   );
   const isDark = useRecoilValue(isDarkAtom);
-
   return (
     <div>
       {isLoading ? (
         "Loading chart..."
       ) : (
         <ApexChart
-          type="line"
+          type="candlestick"
           series={[
             {
               name: "Price",
-              data: data?.map((price) => price.close),
+              data: data?.map((price) => {
+                const newPrice = {
+                  x: price.time_close,
+                  y: [price.open, price.high, price.low, price.close],
+                };
+                return newPrice;
+              }),
             },
           ]}
           options={{

@@ -236,7 +236,7 @@ function Coin({}: ICoinProps) {
 
           <Switch>
             <Route path={`/${coinId}/price`}>
-              <Price />
+              <Price USD={tickersData?.quotes.USD} />
             </Route>
             <Route path={`/${coinId}/chart`}>
               <Chart coinId={coinId} />
