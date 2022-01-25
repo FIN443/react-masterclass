@@ -22,7 +22,7 @@ React를 사용하여 클론코딩하면서 마스터
 - [ ] Price(Detail and Style of coin)
 - [x] Back Button
 - [x] Light / Dark mode
-- [ ] Styles
+- [x] Styles
 
 ### [Link](https://codesandbox.io/s/crypto-tracker-muol7)
 
@@ -56,7 +56,11 @@ React를 사용하여 클론코딩하면서 마스터
   - [x] styled-components
   - [x] recoil
   - [x] react-beautiful-dnd
-- [ ] Styles
+- [x] To Do / Doing / Done Board
+- [x] Boards Movement
+- [x] Card Movement
+- [ ] Creating Tasks
+- [x] Styles
 
 ### [Link](#)
 
