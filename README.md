@@ -17,10 +17,10 @@ React를 사용하여 클론코딩하면서 마스터
 - [x] Route
 - [x] Coin Data
 - [x] Chart
-- [ ] Invert to [Candlestick Charts](https://apexcharts.com/react-chart-demos/candlestick-charts/category-x-axis/)
+- [x] Invert to [Candlestick Charts](https://apexcharts.com/react-chart-demos/candlestick-charts/category-x-axis/)
   - Chart -> IHistorical -> open/ high / low / close
 - [ ] Price(Detail and Style of coin)
-- [ ] Back Button
+- [x] Back Button
 - [x] Light / Dark mode
 - [ ] Styles
 
@@ -52,13 +52,11 @@ React를 사용하여 클론코딩하면서 마스터
 ## Trello Clone
 
 - Setup
-  - [ ] react(typescript)
-  - [ ] styled-components
-  - [ ] react-router-dom
-  - [ ] recoil
-  - [ ] react-beautiful-dnd
+  - [x] react(typescript)
+  - [x] styled-components
+  - [x] recoil
+  - [x] react-beautiful-dnd
 - [ ] Styles
-- [ ] Route
 
 ### [Link](#)
 
