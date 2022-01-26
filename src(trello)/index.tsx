@@ -54,15 +54,10 @@ const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
-  * {
-  box-sizing: border-box;
-  }
   body {
-    font-weight: 300;
     font-family: 'Source Sans Pro', sans-serif;
-    color:black;
-    line-height: 1.2;
-    background:linear-gradient(135deg,#e09,#d0e);
+    background-color: ${(props) => props.theme.bgColor};
+    color: black;
   }
   a {
     text-decoration: none;
