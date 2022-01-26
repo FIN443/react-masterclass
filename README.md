@@ -57,10 +57,17 @@ React를 사용하여 클론코딩하면서 마스터
   - [x] recoil
   - [x] react-beautiful-dnd
 - [x] To Do / Doing / Done Board
-- [x] Boards Movement
-- [x] Card Movement
-- [ ] Creating Tasks
-- [x] Styles
+- [x] Cards Movement
+- [x] Create Cards
+- [ ] Drop & Delete Cards
+- [ ] Save to localStorage
+- [ ] Create Boards
+  - [ ] Form Input
+  - [ ] Delete Boards
+- [ ] Boards Movement
+  - [ ] Inside to another Draggable
+  - [ ] Create atom boardState
+- [ ] Styles
 
 ### [Link](#)
 
