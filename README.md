@@ -83,7 +83,11 @@ React를 사용하여 클론코딩하면서 마스터
   - [ ] recoil
   - [ ] react-hook-form
   - [ ] framer-motion
-- [ ] Styles
 - [ ] Route
+  - [ ] Movies
+  - [ ] TV Shows
+  - [ ] Search
+- [ ] Header
+- [ ] Styles
 
 ### [Link](#)
