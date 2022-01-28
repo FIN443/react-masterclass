@@ -79,7 +79,10 @@ React를 사용하여 클론코딩하면서 마스터
   - [ ] react(typescript)
   - [ ] styled-components
   - [ ] react-router-dom
+  - [ ] react-query
   - [ ] recoil
+  - [ ] react-hook-form
+  - [ ] framer-motion
 - [ ] Styles
 - [ ] Route
 
