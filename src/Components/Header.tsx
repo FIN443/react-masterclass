@@ -1,7 +1,10 @@
 import { motion, useAnimation, useViewportScroll } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { Link, useHistory, useRouteMatch } from "react-router-dom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
+import { currentPageState } from "../atoms";
 
 const Nav = styled(motion.nav)`
   display: flex;
@@ -51,7 +54,7 @@ const Item = styled.li`
   }
 `;
 
-const Search = styled.span`
+const Search = styled.form`
   color: white;
   display: flex;
   align-items: center;
@@ -109,11 +112,13 @@ const navVariants = {
   },
 };
 
+interface IForm {
+  keyword: string;
+}
+
 function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
-  const searchInput = useRef<HTMLInputElement>(null);
-  const homeMatch = useRouteMatch("/");
-  const tvMatch = useRouteMatch("/tv");
+  const current = useRecoilValue(currentPageState);
   const inputAnimation = useAnimation();
   const navAnimation = useAnimation();
   const { scrollY } = useViewportScroll();
@@ -140,6 +145,13 @@ function Header() {
       }
     });
   }, [scrollY]);
+
+  const history = useHistory();
+  const { register, handleSubmit, setFocus } = useForm<IForm>();
+  const onValid = (data: IForm) => {
+    console.log(data);
+    history.push(`/search?keyword=${data.keyword}`);
+  };
   return (
     <Nav variants={navVariants} animate={navAnimation} initial="top">
       <Col>
@@ -157,22 +169,28 @@ function Header() {
         <Items>
           <Item>
             <Link to="/">
-              Home {homeMatch?.isExact && <Circle layoutId="circle" />}
+              Home {current.path === "/" && <Circle layoutId="circle" />}
+            </Link>
+          </Item>
+          <Item>
+            <Link to="/movies">
+              Movies{" "}
+              {current.path === "/movies" && <Circle layoutId="circle" />}
             </Link>
           </Item>
           <Item>
             <Link to="/tv">
-              TV Shows {tvMatch && <Circle layoutId="circle" />}
+              TV Shows {current.path === "/tv" && <Circle layoutId="circle" />}
             </Link>
           </Item>
         </Items>
       </Col>
       <Col>
-        <Search>
+        <Search onSubmit={handleSubmit(onValid)}>
           <motion.svg
             onClick={() => {
               toggleSearch();
-              searchInput.current?.focus();
+              setFocus("keyword");
             }}
             style={{ zIndex: 2 }}
             animate={{ x: searchOpen ? -185 : 0 }}
@@ -188,7 +206,7 @@ function Header() {
             ></path>
           </motion.svg>
           <Input
-            ref={searchInput}
+            {...register("keyword", { required: true, minLength: 2 })}
             onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
               toggleSearch();
               event.target.value = "";

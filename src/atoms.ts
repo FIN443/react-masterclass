@@ -1,19 +1,12 @@
-import { atom, selector } from "recoil";
+import { atom } from "recoil";
 
-export interface ITodo {
-  id: number;
-  text: string;
+interface ICurrentPage {
+  path: string;
 }
 
-interface IToDoState {
-  [key: string]: ITodo[];
-}
-
-export const toDoState = atom<IToDoState>({
-  key: "toDo",
+export const currentPageState = atom<ICurrentPage>({
+  key: "current",
   default: {
-    "To Do": [],
-    Doing: [],
-    Done: [],
+    path: "/",
   },
 });

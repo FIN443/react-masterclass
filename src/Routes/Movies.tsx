@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { currentPageState } from "../atoms";
 
-function Tv() {
+function Movies() {
   const setCurrent = useSetRecoilState(currentPageState);
   useEffect(() => {
-    setCurrent({ path: "/tv" });
+    setCurrent({ path: "/movies" });
   }, []);
-  return <h1>Tv</h1>;
+
+  return <h1>Movies</h1>;
 }
-export default Tv;
+export default Movies;

@@ -84,12 +84,16 @@ React를 사용하여 클론코딩하면서 마스터
   - [ ] react-hook-form
   - [ ] framer-motion
 - [x] Route
+  - Home
   - Movies
-  - TV Shows
+  - TvShows
   - Search
+- [x] Home
 - [x] Header
+- [ ] ContentComponent
+- [ ] Search
 - [ ] Movies
-- [ ] TVShow
+- [ ] TvShows
 - [ ] Styles
 
 ### [Link](#)
