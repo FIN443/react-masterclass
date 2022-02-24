@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
@@ -37,6 +38,14 @@ function App() {
         boardCopy.splice(source.index, 1);
         // 2) Put back the item on the destination.index
         boardCopy.splice(destination?.index, 0, taskObj);
+        // localStorage save
+        localStorage.setItem(
+          "boards",
+          JSON.stringify({
+            ...allBoards,
+            [source.droppableId]: boardCopy,
+          })
+        );
         return {
           ...allBoards,
           [source.droppableId]: boardCopy,
@@ -49,6 +58,14 @@ function App() {
       setToDos((allBoards) => {
         const sourceBoard = [...allBoards[source.droppableId]];
         sourceBoard.splice(source.index, 1);
+        // localStorage save
+        localStorage.setItem(
+          "boards",
+          JSON.stringify({
+            ...allBoards,
+            [source.droppableId]: sourceBoard,
+          })
+        );
         return {
           ...allBoards,
           [source.droppableId]: sourceBoard,
@@ -66,6 +83,15 @@ function App() {
 
         sourceBoard.splice(source.index, 1);
         destinationBoard.splice(destination?.index, 0, taskObj);
+        // localStorage save
+        localStorage.setItem(
+          "boards",
+          JSON.stringify({
+            ...allBoards,
+            [source.droppableId]: sourceBoard,
+            [destination?.droppableId]: destinationBoard,
+          })
+        );
         return {
           ...allBoards,
           [source.droppableId]: sourceBoard,
@@ -75,6 +101,14 @@ function App() {
       return;
     }
   };
+  useEffect(() => {
+    // localStorage load
+    const loadedToDos = localStorage.getItem("boards");
+    if (loadedToDos !== null) {
+      const parsedToDos = JSON.parse(loadedToDos);
+      setToDos(parsedToDos);
+    }
+  }, []);
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Wrapper>
