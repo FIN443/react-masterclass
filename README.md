@@ -16,9 +16,9 @@ React를 사용하여 클론코딩하면서 마스터
 - [x] Create Cards
 - [x] Drop & Delete Cards
 - [x] Save to localStorage
-- [ ] Create Boards
-  - [ ] Form Input
-  - [ ] Delete Boards
+- [x] Create Boards
+  - [x] Form Input
+  - [x] Delete Boards
 - [ ] Boards Movement
   - [ ] Inside to another Draggable
   - [ ] Create atom boardState

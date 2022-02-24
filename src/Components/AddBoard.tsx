@@ -26,8 +26,14 @@ export default function AddBoard() {
   const onValid = ({ board }: { board?: string }) => {
     setToDos((allBoards) => {
       // 원래 보드에 새로운 빈 보드 추가
+      // localStorage save
+      localStorage.setItem(
+        "boards",
+        JSON.stringify({ ...allBoards, [board + ""]: [] })
+      );
       return { ...allBoards, [board + ""]: [] };
     });
+    setValue("board", "");
   };
   return (
     <>

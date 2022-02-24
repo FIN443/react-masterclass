@@ -55,6 +55,19 @@ const Input = styled.input`
   outline: none;
 `;
 
+const Header = styled.div`
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  margin: 0 20px;
+`;
+
+const Button = styled.button`
+  position: absolute;
+  bottom: 8px;
+  right: 0;
+`;
+
 interface IBoardProps {
   toDos?: ITodo[];
   boardId: string;
@@ -73,6 +86,14 @@ function Board({ toDos, boardId }: IBoardProps) {
       text: toDo,
     };
     setToDos((allBoards) => {
+      // localStorage save
+      localStorage.setItem(
+        "boards",
+        JSON.stringify({
+          ...allBoards,
+          [boardId]: [newToDo, ...allBoards[boardId]],
+        })
+      );
       return {
         ...allBoards,
         [boardId]: [newToDo, ...allBoards[boardId]],
@@ -80,9 +101,28 @@ function Board({ toDos, boardId }: IBoardProps) {
     });
     setValue("toDo", "");
   };
+  const onDelete = (boardId: string) => {
+    setToDos((allBoards) => {
+      // key 값을 리스트로 추출하고 filter로 제외
+      const boardsList = Object.keys(allBoards).filter(
+        (board) => board !== boardId
+      );
+      let boards = {};
+      // key값 리스트로 새로운 Object 생성
+      boardsList.map((board) => {
+        boards = { ...boards, [board]: allBoards[board] };
+      });
+      // localStorage save
+      localStorage.setItem("boards", JSON.stringify({ ...boards }));
+      return { ...boards };
+    });
+  };
   return (
     <Wrapper>
-      <Title>{boardId}</Title>
+      <Header>
+        <Title>{boardId}</Title>
+        <Button onClick={() => onDelete(boardId)}>❌</Button>
+      </Header>
       <Form onSubmit={handleSubmit(onValid)}>
         <Input
           {...register("toDo", { required: true })}
