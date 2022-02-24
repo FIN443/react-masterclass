@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { toDoState } from "./atoms";
 import Board from "./Components/Board";
+import RemoveBoard from "./Components/RemoveBoard";
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,6 +27,7 @@ function App() {
   const onDragEnd = (info: DropResult) => {
     const { destination, draggableId, source } = info;
     if (!destination) return;
+    // 같은 보드에서 옮길 때
     if (destination?.droppableId === source.droppableId) {
       // same board movement
       setToDos((allBoards) => {
@@ -40,13 +42,28 @@ function App() {
           [source.droppableId]: boardCopy,
         };
       });
+      return;
     }
+    // 휴지통으로 옮길 때
+    if (destination.droppableId === "Remove") {
+      setToDos((allBoards) => {
+        const sourceBoard = [...allBoards[source.droppableId]];
+        sourceBoard.splice(source.index, 1);
+        return {
+          ...allBoards,
+          [source.droppableId]: sourceBoard,
+        };
+      });
+      return;
+    }
+    // 다른 보드로 옮길 때
     if (destination.droppableId !== source.droppableId) {
       // cross board movement
       setToDos((allBoards) => {
         const sourceBoard = [...allBoards[source.droppableId]];
         const taskObj = sourceBoard[source.index];
         const destinationBoard = [...allBoards[destination.droppableId]];
+
         sourceBoard.splice(source.index, 1);
         destinationBoard.splice(destination?.index, 0, taskObj);
         return {
@@ -55,6 +72,7 @@ function App() {
           [destination?.droppableId]: destinationBoard,
         };
       });
+      return;
     }
   };
   return (
@@ -65,6 +83,7 @@ function App() {
             <Board boardId={boardId} key={boardId} toDos={toDos[boardId]} />
           ))}
         </Boards>
+        <RemoveBoard boardId={"Remove"} />
       </Wrapper>
     </DragDropContext>
   );
