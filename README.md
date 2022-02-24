@@ -15,7 +15,7 @@ React를 사용하여 클론코딩하면서 마스터
 - [x] Cards Movement
 - [x] Create Cards
 - [x] Drop & Delete Cards
-- [ ] Save to localStorage
+- [x] Save to localStorage
 - [ ] Create Boards
   - [ ] Form Input
   - [ ] Delete Boards

@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { toDoState } from "./atoms";
+import AddBoard from "./Components/AddBoard";
 import Board from "./Components/Board";
 import RemoveBoard from "./Components/RemoveBoard";
 
@@ -112,6 +114,7 @@ function App() {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Wrapper>
+        <AddBoard />
         <Boards>
           {Object.keys(toDos).map((boardId) => (
             <Board boardId={boardId} key={boardId} toDos={toDos[boardId]} />
