@@ -19,8 +19,8 @@ React를 사용하여 클론코딩하면서 마스터
 - [x] Create Boards
   - [x] Form Input
   - [x] Delete Boards
-- [ ] Boards Movement
-  - [ ] Inside to another Draggable
+- [x] Boards Movement
+  - [x] Inside to another Draggable
   - [ ] Create atom boardState
 - [ ] Styles
 

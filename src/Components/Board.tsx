@@ -1,18 +1,22 @@
-import { Droppable } from "react-beautiful-dnd";
+import React from "react";
+import { Draggable, Droppable } from "react-beautiful-dnd";
 import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { ITodo, toDoState } from "../atoms";
 import DraggableCard from "./DraggableCard";
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ isDragging: boolean }>`
+  flex: 0 0 auto;
   width: 300px;
-  padding-top: 10px;
   background-color: ${(props) => props.theme.boardColor};
+  box-shadow: ${(props) =>
+    props.isDragging ? "0px 2px 5px rgba(0, 0, 0, 0.5)" : "none"};
   border-radius: 5px;
   min-height: 300px;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.2s ease-in-out;
 `;
 
 const Title = styled.h2`
@@ -55,29 +59,34 @@ const Input = styled.input`
   outline: none;
 `;
 
-const Header = styled.div`
-  display: flex;
+const Header = styled.div<{ isDragging: boolean }>`
+  padding-top: 10px;
+  border-radius: 5px 5px 0 0;
+  background-color: ${(props) =>
+    props.isDragging ? "#fd965b" : props.theme.boardColor};
+
+  transition: background-color 0.2s ease-in-out;
   position: relative;
   justify-content: space-between;
-  margin: 0 20px;
 `;
 
 const Button = styled.button`
   position: absolute;
-  bottom: 8px;
-  right: 0;
+  top: 6px;
+  right: 10px;
 `;
 
 interface IBoardProps {
   toDos?: ITodo[];
   boardId: string;
+  index: number;
 }
 
 interface IForm {
   toDo: string;
 }
 
-function Board({ toDos, boardId }: IBoardProps) {
+function Board({ toDos, boardId, index }: IBoardProps) {
   const setToDos = useSetRecoilState(toDoState);
   const { register, setValue, handleSubmit } = useForm<IForm>();
   const onValid = ({ toDo }: IForm) => {
@@ -118,40 +127,52 @@ function Board({ toDos, boardId }: IBoardProps) {
     });
   };
   return (
-    <Wrapper>
-      <Header>
-        <Title>{boardId}</Title>
-        <Button onClick={() => onDelete(boardId)}>❌</Button>
-      </Header>
-      <Form onSubmit={handleSubmit(onValid)}>
-        <Input
-          {...register("toDo", { required: true })}
-          type="text"
-          placeholder={`Add task on ${boardId}`}
-        />
-      </Form>
-      <Droppable droppableId={boardId}>
-        {(provided, snapshop) => (
-          <Area
-            isDraggingOver={snapshop.isDraggingOver}
-            isDraggingFromThis={Boolean(snapshop.draggingFromThisWith)}
-            ref={provided.innerRef}
-            {...provided.droppableProps}
+    <Draggable draggableId={boardId} index={index}>
+      {(provided, snapshot) => (
+        <Wrapper
+          key={index}
+          ref={provided.innerRef}
+          isDragging={snapshot.isDragging}
+          {...provided.draggableProps}
+        >
+          <Header
+            {...provided.dragHandleProps}
+            isDragging={snapshot.isDragging}
           >
-            {toDos?.map((toDo, index) => (
-              <DraggableCard
-                key={toDo.id}
-                index={index}
-                toDoId={toDo.id}
-                toDoText={toDo.text}
+            <Title>{boardId}</Title>
+            <Button onClick={() => onDelete(boardId)}>❌</Button>
+            <Form onSubmit={handleSubmit(onValid)}>
+              <Input
+                {...register("toDo", { required: true })}
+                type="text"
+                placeholder={`Add task on ${boardId}`}
               />
-            ))}
-            {provided.placeholder}
-          </Area>
-        )}
-      </Droppable>
-    </Wrapper>
+            </Form>
+          </Header>
+          <Droppable droppableId={boardId} direction="vertical" type="CARD">
+            {(provided, snapshot) => (
+              <Area
+                isDraggingOver={snapshot.isDraggingOver}
+                isDraggingFromThis={Boolean(snapshot.draggingFromThisWith)}
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                {toDos?.map((toDo, index) => (
+                  <DraggableCard
+                    key={toDo.id}
+                    index={index}
+                    toDoId={toDo.id}
+                    toDoText={toDo.text}
+                  />
+                ))}
+                {provided.placeholder}
+              </Area>
+            )}
+          </Droppable>
+        </Wrapper>
+      )}
+    </Draggable>
   );
 }
 
-export default Board;
+export default React.memo(Board);

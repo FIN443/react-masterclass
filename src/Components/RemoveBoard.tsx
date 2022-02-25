@@ -1,8 +1,6 @@
 import { Droppable } from "react-beautiful-dnd";
-import { useForm } from "react-hook-form";
-import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { ITodo, toDoState } from "../atoms";
+import { ITodo } from "../atoms";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -47,15 +45,14 @@ interface IBoardProps {
 }
 
 function RemoveBoard({ toDos, boardId }: IBoardProps) {
-  const setToDos = useSetRecoilState(toDoState);
   return (
     <Wrapper>
       <Title>{boardId}</Title>
-      <Droppable droppableId={boardId}>
-        {(provided, snapshop) => (
+      <Droppable droppableId={boardId} type="CARD">
+        {(provided, snapshot) => (
           <Area
-            isDraggingOver={snapshop.isDraggingOver}
-            isDraggingFromThis={Boolean(snapshop.draggingFromThisWith)}
+            isDraggingOver={snapshot.isDraggingOver}
+            isDraggingFromThis={Boolean(snapshot.draggingFromThisWith)}
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
